@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tienda;
+package facturacion;
 
 /**
  *
- * @author andresteve07
+ * @author utku36
  */
-public interface ControladorVistas {
-    public void lanzarMenuPrincipal();
-    public void lanzarTomarPedido();
-    public void lanzarFacturacion();
+public interface ContratoVistaFacturacion {
+    
+    public void iniciarFacturacion();
+    
 }
