@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
+import modelos.TamanioPizza;
 
 /**
  *
@@ -26,6 +27,11 @@ public class FalsoProveedorTomaPedido implements ProveedorTomaPedido{
             new TipoPizza("horno gas", "horno"),
             new TipoPizza("horno lenia", "piedra"));
     
+    private List<TamanioPizza> tamanios = Arrays.asList(
+            new TamanioPizza(8,"Chica"),
+            new TamanioPizza(10,"Mediana"),
+            new TamanioPizza(12,"Grande"));
+    
     @Override
     public List<VariedadPizza> obtenerVariedades() {
         return this.variedades;
@@ -35,5 +41,11 @@ public class FalsoProveedorTomaPedido implements ProveedorTomaPedido{
     public List<TipoPizza> obtenerTipos() {
         return this.tipos;
     }
+
+    @Override
+    public List<TamanioPizza> obtenerTamanio() {
+        return this.tamanios;
+    }
+    
     
 }

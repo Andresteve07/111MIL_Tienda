@@ -8,6 +8,7 @@ package tomarpedido;
 import java.util.List;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
+import modelos.TamanioPizza;
 import tomarpedido.proveedores.FalsoProveedorTomaPedido;
 import tomarpedido.proveedores.ProveedorTomaPedido;
 
@@ -22,6 +23,8 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     private final ProveedorTomaPedido proveedorTomaPedido;
     private int codigoTipoPizza;
     private int codigoCoccion;
+    private int codigoTamanio;
+    private int cantidad;
     
 
     public PresentadorPedido(ContratoVistaPedido vista) {
@@ -33,7 +36,7 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     @Override
     public void procesarTipoPizzaIngresado(int op){
         switch(op){
-            case 0:
+            case -1:
                 this.vista.irMenuPrincipal();
                 break;
             default:
@@ -53,14 +56,33 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     @Override
     public void procesarCoccionSeleccionada(int op) {
         switch(op){
-            case 0:
+            case -1:
                 this.vista.irMenuPrincipal();
                 break;
-            case 1:
+            case -2:
+                this.vista.mostrarVariedadesDisponibles();
                 this.vista.mostrarSeleccionVariedadPizza();
                 break;
             default:
                 this.codigoCoccion = op;
+                this.vista.mostrarTamaniosDisponibles();
+                this.vista.mostrarSeleccionarTamanioPizza();
+                break;
+        }
+    }
+    
+    @Override
+    public void procesarTamanioSeleccionado(int op) {
+        switch(op){
+            case -1:
+                this.vista.irMenuPrincipal();
+                break;
+            case -2:
+                this.vista.mostrarTiposCoccionDisponibles();
+                this.vista.mostrarSeleccionCoccion();
+                break;
+            default:
+                this.codigoTamanio = op;
                 this.vista.irMenuPrincipal();
                 break;
         }
@@ -74,5 +96,10 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     @Override
     public List<TipoPizza> obtenerTiposCoccion() {
         return this.proveedorTomaPedido.obtenerTipos();
+    }
+    
+    @Override
+    public List<TamanioPizza> obtenerTamanioPizza(){
+        return this.proveedorTomaPedido.obtenerTamanio();
     }
 }

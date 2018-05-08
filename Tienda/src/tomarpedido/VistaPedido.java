@@ -7,6 +7,7 @@ package tomarpedido;
 
 import java.util.List;
 import java.util.Scanner;
+import modelos.TamanioPizza;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
 import tienda.ControladorVistas;
@@ -33,7 +34,7 @@ public class VistaPedido implements ContratoVistaPedido {
         clearConsole();
         System.out.println("\t"+"¡Tipo Pizza!"+"\n"+
                 "Ingrese una de las siguientes opciones: "+"\n"+
-                "0) Para regresar al menu principal"+"\n"+
+                "-1) Para regresar al menu principal"+"\n"+
                 "NRO) El numero del tipo de pizza para seleccionar el tipo."+"\n");
         int opcion=teclado.nextInt();
         presentador.procesarTipoPizzaIngresado(opcion);
@@ -72,11 +73,25 @@ public class VistaPedido implements ContratoVistaPedido {
         clearConsole();
         System.out.println("\t"+"¡COCCION!"+"\n"+
                 "Ingrese una de las siguientes opciones: "+"\n"+
-                "0) Para regresar al menu principal"+"\n"+
-                "1) Para cambiar el tipo de pizza"+"\n"+
+                "-1) Para regresar al menu principal"+"\n"+
+                "-2) Para cambiar el tipo de pizza"+"\n"+
                 "NRO) El numero del tipo de coccion para seleccionar el tipo de coccion."+"\n");
         int opcion=teclado.nextInt();
         presentador.procesarCoccionSeleccionada(opcion);
+    }
+    
+    @Override
+    public void mostrarSeleccionarTamanioPizza(){
+        Scanner teclado=new Scanner(System.in);
+        clearConsole();
+        System.out.println("\t"+"¡Tamanio!"+"\n"+
+                "Ingrese una de las siguientes opciones: "+"\n"+
+                "-1) Para regresar al menu principal"+"\n"+
+                "-2) Para cambiar el tipo de coccion"+"\n"+
+                "NRO) El numero del tipo de tamanio para seleccionar el tipo de tamanio."+"\n");
+        int opcion=teclado.nextInt();
+        presentador.procesarTamanioSeleccionado(opcion);
+        
     }
 
     @Override
@@ -96,6 +111,15 @@ public class VistaPedido implements ContratoVistaPedido {
         for (int index = 0; index < cocciones.size(); index++) {
             System.out.println("Codigo: " + index + "  -> " + "Coccion: " + cocciones.get(index).getNombre());
             
+        }
+    }
+    
+    public void mostrarTamaniosDisponibles(){
+        List<TamanioPizza> tamanios = this.presentador.obtenerTamanioPizza();
+        
+        for (int index = 0; index < tamanios.size(); index++) {
+            System.out.println("Codigo: " + index + "  -> " + "Tamanio: " + tamanios.get(index).getNombre());
+           
         }
     }
 }

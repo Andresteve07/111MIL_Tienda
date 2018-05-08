@@ -16,10 +16,11 @@ public interface ContratoVistaPedido {
     public void mostrarTiposCoccionDisponibles();
     public void mostrarSeleccionVariedadPizza();
     public void mostrarOPcionErronea();
+    public void mostrarSeleccionarTamanioPizza();
    
 
     public void irMenuPrincipal();
 
     public void mostrarSeleccionCoccion();
-   
+    public void mostrarTamaniosDisponibles();
 }
