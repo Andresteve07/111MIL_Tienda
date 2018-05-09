@@ -11,6 +11,7 @@ package administrar;
  */
 public interface ContratoPresentadorAdministrar {
     
-    public void procesarCategoria(int codigoCategoria);
+    public void procesarCategorias(int codigoCategorias);
+    public void iniciar();
     
 }

@@ -6,6 +6,9 @@
 package administrar;
 
 import java.util.List;
+import modelos.Pizza;
+import modelos.TamanioPizza;
+import modelos.TipoPizza;
 import modelos.VariedadPizza;
 
 /**
@@ -13,8 +16,12 @@ import modelos.VariedadPizza;
  * @author utku29
  */
 public interface ContratoVistaAdministrar {
-
-    public void mostrarCategorias();
+    
+    public void irMenuPrincipal();
+    public void mostrarCategorias(int codigoCategorias);
+    public void mostrarCoccion(List<TipoPizza> tipoCoccion);
+    public void mostrarTamanios(List<TamanioPizza> tamanios);
     public void mostrarVariedades(List<VariedadPizza> variedades);
+    public void mostrarPrecios(List<Pizza> precios);
     
 }
