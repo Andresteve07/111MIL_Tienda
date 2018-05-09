@@ -7,6 +7,7 @@ package tomarpedido;
 
 import java.util.List;
 import java.util.Scanner;
+import modelos.Pizza;
 import modelos.TamanioPizza;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
@@ -29,16 +30,26 @@ public class VistaPedido implements ContratoVistaPedido {
 }
     
     @Override
-    public void mostrarSeleccionVariedadPizza(){
+    public void mostrarSeleccionPizza(){
         Scanner teclado=new Scanner(System.in);
         clearConsole();
-        System.out.println("\t"+"¡Tipo Pizza!"+"\n"+
+        System.out.println("\t"+"¡Pizza!"+"\n"+
                 "Ingrese una de las siguientes opciones: "+"\n"+
                 "-1) Para regresar al menu principal"+"\n"+
-                "NRO) El numero del tipo de pizza para seleccionar el tipo."+"\n");
+                "NRO) El numero de pizza para seleccionarla."+"\n");
         int opcion=teclado.nextInt();
-        presentador.procesarTipoPizzaIngresado(opcion);
+        presentador.procesarPizzaSeleccionada(opcion);
     }
+    
+    @Override
+    public void mostrarSeleccionCantidad() {
+        Scanner teclado=new Scanner(System.in);
+        clearConsole();
+        System.out.println("Cuantas pizzas de esta quiere?");
+        int opcion = teclado.nextInt();
+        this.presentador.procesarCantidades(opcion);
+    }
+    
     
     @Override
     public void mostrarOPcionErronea(){
@@ -68,58 +79,34 @@ public class VistaPedido implements ContratoVistaPedido {
     }
 
     @Override
-    public void mostrarSeleccionCoccion() {
-        Scanner teclado=new Scanner(System.in);
-        clearConsole();
-        System.out.println("\t"+"¡COCCION!"+"\n"+
-                "Ingrese una de las siguientes opciones: "+"\n"+
-                "-1) Para regresar al menu principal"+"\n"+
-                "-2) Para cambiar el tipo de pizza"+"\n"+
-                "NRO) El numero del tipo de coccion para seleccionar el tipo de coccion."+"\n");
-        int opcion=teclado.nextInt();
-        presentador.procesarCoccionSeleccionada(opcion);
-    }
-    
-    @Override
-    public void mostrarSeleccionarTamanioPizza(){
-        Scanner teclado=new Scanner(System.in);
-        clearConsole();
-        System.out.println("\t"+"¡Tamanio!"+"\n"+
-                "Ingrese una de las siguientes opciones: "+"\n"+
-                "-1) Para regresar al menu principal"+"\n"+
-                "-2) Para cambiar el tipo de coccion"+"\n"+
-                "NRO) El numero del tipo de tamanio para seleccionar el tipo de tamanio."+"\n");
-        int opcion=teclado.nextInt();
-        presentador.procesarTamanioSeleccionado(opcion);
+    public void mostrarPizzasDisponibles() {
+        List<Pizza> pizzas = this.presentador.obtenerPizzas();
         
-    }
-
-    @Override
-    public void mostrarVariedadesDisponibles() {
-        List<VariedadPizza> variedades = this.presentador.obtenerVariedades();
-        
-        for (int index = 0; index < variedades.size(); index++) {
-            System.out.println("Codigo: " + index + "  -> " + "Variedad: " + variedades.get(index).getNombre());
+        for (int index = 0; index < pizzas.size(); index++) {
+            System.out.println("Codigo: " + index + "  -> " + "Pizza: " + pizzas.get(index).getNombre());
             
         }
     }
 
     @Override
-    public void mostrarTiposCoccionDisponibles() {
-        List<TipoPizza> cocciones = this.presentador.obtenerTiposCoccion();
+    public void confirmacion() {
+        Scanner teclado=new Scanner(System.in);
+        int pizza= presentador.getCodigoPizza();
+        int opcion;
+        clearConsole();
+        System.out.println("Su eleccion fue:");
+        System.out.println(presentador.getCantidad()+" pizzas "+presentador.obtenerPizzas().get(pizza).getNombre());
+        System.out.println("Desea confirmar su eleccion?");
+        System.out.println("1)Si");
+        System.out.println("2)No");
+        opcion = teclado.nextInt();
+        this.presentador.procesarConfirmacion(opcion);
         
-        for (int index = 0; index < cocciones.size(); index++) {
-            System.out.println("Codigo: " + index + "  -> " + "Coccion: " + cocciones.get(index).getNombre());
-            
-        }
     }
+
     
-    public void mostrarTamaniosDisponibles(){
-        List<TamanioPizza> tamanios = this.presentador.obtenerTamanioPizza();
-        
-        for (int index = 0; index < tamanios.size(); index++) {
-            System.out.println("Codigo: " + index + "  -> " + "Tamanio: " + tamanios.get(index).getNombre());
-           
-        }
-    }
+
+    
+    
+    
 }

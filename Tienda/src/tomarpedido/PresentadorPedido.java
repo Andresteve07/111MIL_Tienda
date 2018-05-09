@@ -6,6 +6,7 @@
 package tomarpedido;
 
 import java.util.List;
+import modelos.Pizza;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
 import modelos.TamanioPizza;
@@ -21,11 +22,18 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     
     private final ContratoVistaPedido vista;
     private final ProveedorTomaPedido proveedorTomaPedido;
-    private int codigoTipoPizza;
-    private int codigoCoccion;
-    private int codigoTamanio;
+    private int codigoPizza;
     private int cantidad;
-    
+
+    @Override
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    @Override
+    public int getCodigoPizza() {
+        return codigoPizza;
+    }
 
     public PresentadorPedido(ContratoVistaPedido vista) {
         this.vista = vista;
@@ -34,72 +42,70 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     
     
     @Override
-    public void procesarTipoPizzaIngresado(int op){
-        switch(op){
-            case -1:
-                this.vista.irMenuPrincipal();
-                break;
-            default:
-                this.codigoTipoPizza = op;
-                this.vista.mostrarTiposCoccionDisponibles();
-                this.vista.mostrarSeleccionCoccion();
-                break;
-            
-        }
-    }
-    @Override
     public void iniciar(){
-        this.vista.mostrarVariedadesDisponibles();
-        this.vista.mostrarSeleccionVariedadPizza();
+        this.vista.mostrarPizzasDisponibles();
+        this.vista.mostrarSeleccionPizza();
     }
-
+    
     @Override
-    public void procesarCoccionSeleccionada(int op) {
-        switch(op){
+    public void procesarPizzaSeleccionada(int op) {
+        if(comprobacionOpcion(obtenerPizzas().size(), op)){
+            switch(op){
             case -1:
                 this.vista.irMenuPrincipal();
                 break;
-            case -2:
-                this.vista.mostrarVariedadesDisponibles();
-                this.vista.mostrarSeleccionVariedadPizza();
+            default:
+                codigoPizza = op;
+                this.vista.mostrarSeleccionCantidad();
+            }
+        }else{
+            this.vista.mostrarOPcionErronea();
+            iniciar();
+        }
+        
+    }
+    
+    @Override
+    public void procesarCantidades(int op){
+        switch(op){
+            case 0:
+                iniciar();
                 break;
             default:
-                this.codigoCoccion = op;
-                this.vista.mostrarTamaniosDisponibles();
-                this.vista.mostrarSeleccionarTamanioPizza();
+                cantidad= op;
+                this.vista.confirmacion();
                 break;
         }
     }
     
+    
+        
+
     @Override
-    public void procesarTamanioSeleccionado(int op) {
+    public List<Pizza> obtenerPizzas() {
+        return proveedorTomaPedido.obtenerPizzas();
+    }
+
+    @Override
+    public boolean comprobacionOpcion(int max, int op) {
+        return op<max;
+    }
+
+    @Override
+    public void procesarConfirmacion(int op) {
         switch(op){
-            case -1:
-                this.vista.irMenuPrincipal();
+            case 1:
+                
                 break;
-            case -2:
-                this.vista.mostrarTiposCoccionDisponibles();
-                this.vista.mostrarSeleccionCoccion();
+            case 2:
+                this.vista.irMenuPrincipal();
                 break;
             default:
-                this.codigoTamanio = op;
-                this.vista.irMenuPrincipal();
+                this.vista.mostrarOPcionErronea();
+                this.vista.confirmacion();
                 break;
         }
     }
 
-    @Override
-    public List<VariedadPizza> obtenerVariedades() {
-        return this.proveedorTomaPedido.obtenerVariedades();
-    }
-
-    @Override
-    public List<TipoPizza> obtenerTiposCoccion() {
-        return this.proveedorTomaPedido.obtenerTipos();
-    }
     
-    @Override
-    public List<TamanioPizza> obtenerTamanioPizza(){
-        return this.proveedorTomaPedido.obtenerTamanio();
-    }
 }
