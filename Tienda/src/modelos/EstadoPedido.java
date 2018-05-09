@@ -48,7 +48,7 @@ public class EstadoPedido {
                 break;
             case 1:
               nombre="En preparación";
-            
+                break;
             case 2:
                 nombre="Pendiente facturación";
                 break;
