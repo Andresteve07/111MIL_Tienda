@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tienda;
+package estadisticas;
 
 /**
  *
- * @author andresteve07
+ * @author utku38
  */
-public interface ControladorVistas {
-    public void lanzarMenuPrincipal();
-    public void lanzarTomarPedido();
-    public void lanzarEstadisticas();
+public interface ContratoPresentadorEstadisticas {
+    public void iniciar();
+    public void procesarOpcion(int op);
+    
 }

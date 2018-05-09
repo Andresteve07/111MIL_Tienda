@@ -5,6 +5,7 @@
  */
 package tienda;
 
+import estadisticas.VistaEstadisticas;
 import menuprincipal.VistaMP;
 import tomarpedido.VistaPedido;
 
@@ -20,7 +21,7 @@ public class Tienda implements ControladorVistas{
     public static void main(String[] args) {
         // TODO code application logic her
         ControladorVistas controlador = new Tienda();
-        controlador.lanzarMenuPrincipal();
+        controlador.lanzarEstadisticas();
     }
 
     @Override
@@ -31,6 +32,11 @@ public class Tienda implements ControladorVistas{
     @Override
     public void lanzarTomarPedido() {
         VistaPedido vistaPedido = new VistaPedido(this);
+    }
+
+    @Override
+    public void lanzarEstadisticas() {
+        VistaEstadisticas vistaEstadisticas =new VistaEstadisticas(this);
     }
     
 }
