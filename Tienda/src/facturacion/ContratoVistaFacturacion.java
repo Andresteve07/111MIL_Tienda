@@ -12,10 +12,10 @@ package facturacion;
 public interface ContratoVistaFacturacion {
     
     public void facturar();
-    public void resultadoFacturacion(int numero);
     public void mostarOpcionInvalida();
     public void mostrarMenuSecundario();
     public void irMenuPrincipal();
     public void mostrarSaludoDespedida();
+    public void imprimirFactura(int numero);
     
 }

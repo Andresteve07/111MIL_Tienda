@@ -15,6 +15,7 @@ import modelos.Pedido;
 public interface ContratoPresentadorFacturacion {
     
     public void iniciar();
+    public ArrayList<Pedido> obtenerPedidosPendientes();
     public ArrayList<Pedido> obtenerPedidos();
     public void procesarOpcionIngresada(int numeroIngresado);
     public void procesarOpcionMenuSecundario(int numero);

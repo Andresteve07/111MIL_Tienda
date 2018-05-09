@@ -60,6 +60,10 @@ public class FalsoProveedorFacturacion implements ContratoProveedorFacturacion {
         Pedido pedido2 = new Pedido("Esteban", 2, "05/07/12 16:00", "05/07/12 17:30", factura2, estadoPedido2, detallePedido2);
         Pedido pedido3 = new Pedido("JB", 3, "05/07/12 19:00", "05/07/12 22:00", factura3, estadoPedido3, detallePedido3);
         
+        pedido1.getEstadoPedido().setCodigo(2);
+        pedido2.getEstadoPedido().setCodigo(2);
+        pedido3.getEstadoPedido().setCodigo(2);
+        
         pedidos.add(pedido1);
         pedidos.add(pedido2);
         pedidos.add(pedido3);

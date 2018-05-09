@@ -27,8 +27,9 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
     @Override
     public void facturar() {
         Scanner scan = new Scanner(System.in);
-        ArrayList<Pedido> pedidos = presentador.obtenerPedidos();
+        ArrayList<Pedido> pedidos = presentador.obtenerPedidosPendientes();
         
+        System.out.println("");
         for(Pedido pedido: pedidos) {
             System.out.println("_Pedido N" + pedido.getNumero() + " _Cliente: " + pedido.getNombreCliente());
         }
@@ -39,8 +40,16 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
     }
     
     @Override
-    public void resultadoFacturacion(int numero) {
-        System.out.println("El pedido " + numero + " se ha facturado correctamente.");
+    public void imprimirFactura(int numero) {
+        System.out.println("El pedido " + (numero + 1) + " se ha facturado correctamente.");
+        System.out.println("La factura se muestra a continuacion:");
+        System.out.println("**** Factura Numero: " + presentador.obtenerPedidosPendientes().get(numero).getFactura().getNumero());
+        System.out.println("Nombre Cliente: " + presentador.obtenerPedidosPendientes().get(numero).getNombreCliente());
+        System.out.println("Fecha y Hora de Creacion: " + presentador.obtenerPedidosPendientes().get(numero).getFechaHoraCreacion());
+        System.out.println("Fecha y Hora de Entrega: " + presentador.obtenerPedidosPendientes().get(numero).getFechaHoraEntrega());
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Total a pagar: " + presentador.obtenerPedidosPendientes().get(numero).calcTotalPedido());
     }
     
     @Override
@@ -52,7 +61,7 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
     @Override
     public void mostrarMenuSecundario() {
         Scanner scan = new Scanner(System.in);
-        
+        System.out.println("");
         System.out.println("Ingrese una de las siguiente opciones");
         System.out.println("1. Facturar otro pedido");
         System.out.println("2. Regresar al menu principal");

@@ -30,27 +30,28 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
 
     @Override
     public void procesarOpcionIngresada(int numeroIngresado) {
-        switch(numeroIngresado) {
-            case 1:
-                this.proveedorFacturacion.obtenerPedidos().get(numeroIngresado - 1).facturar();
-                vista.resultadoFacturacion(numeroIngresado);
-                vista.mostrarMenuSecundario();
-                break;
-            case 2:
-                this.proveedorFacturacion.obtenerPedidos().get(numeroIngresado - 1).facturar();
-                vista.resultadoFacturacion(numeroIngresado);
-                vista.mostrarMenuSecundario();
-                break;
-            case 3:
-                this.proveedorFacturacion.obtenerPedidos().get(numeroIngresado - 1).facturar();
-                vista.resultadoFacturacion(numeroIngresado);
-                vista.mostrarMenuSecundario();
-                break;
-            default:
-                vista.mostarOpcionInvalida();
-                vista.mostrarMenuSecundario();
-                break;
+        if(numeroIngresado >= 1 && numeroIngresado <= obtenerPedidosPendientes().size()) {
+            obtenerPedidosPendientes().get(numeroIngresado - 1).facturar();
+            obtenerPedidosPendientes().get(numeroIngresado - 1).getEstadoPedido().setCodigo(3);
+            vista.imprimirFactura(numeroIngresado - 1);
+            vista.mostrarMenuSecundario();
         }
+        else {
+            vista.mostarOpcionInvalida();
+        }
+    }
+    
+    @Override
+    public ArrayList<Pedido> obtenerPedidosPendientes() {
+        ArrayList<Pedido> pedidosPendientes = new ArrayList();
+        ArrayList<Pedido> pedidosTotales = obtenerPedidos();
+        
+        for(Pedido pedido: pedidosTotales) {
+            if(pedido.getEstadoPedido().getCodigo() == 2) {
+                pedidosPendientes.add(pedido);
+            }
+        }
+        return pedidosPendientes;
     }
     
     @Override
