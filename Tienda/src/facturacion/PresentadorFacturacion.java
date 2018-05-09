@@ -76,4 +76,9 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
                 break;
         }
     }
+    
+    @Override
+    public Pedido obtenerPedido(int numero) {
+        return obtenerPedidos().get(numero);
+    }
 }

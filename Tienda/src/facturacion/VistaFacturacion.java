@@ -43,13 +43,21 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
     public void imprimirFactura(int numero) {
         System.out.println("El pedido " + (numero + 1) + " se ha facturado correctamente.");
         System.out.println("La factura se muestra a continuacion:");
-        System.out.println("**** Factura Numero: " + presentador.obtenerPedidosPendientes().get(numero).getFactura().getNumero());
-        System.out.println("Nombre Cliente: " + presentador.obtenerPedidosPendientes().get(numero).getNombreCliente());
-        System.out.println("Fecha y Hora de Creacion: " + presentador.obtenerPedidosPendientes().get(numero).getFechaHoraCreacion());
-        System.out.println("Fecha y Hora de Entrega: " + presentador.obtenerPedidosPendientes().get(numero).getFechaHoraEntrega());
         System.out.println("");
+        System.out.println("**** Factura Numero: " + presentador.obtenerPedido(numero).getFactura().getNumero());
+        System.out.println("Nombre Cliente: " + presentador.obtenerPedido(numero).getNombreCliente());
+        System.out.println("Fecha y Hora de Creacion: " + presentador.obtenerPedido(numero).getFechaHoraCreacion());
+        System.out.println("Fecha y Hora de Entrega: " + presentador.obtenerPedido(numero).getFechaHoraEntrega());
         System.out.println("");
-        System.out.println("Total a pagar: " + presentador.obtenerPedidosPendientes().get(numero).calcTotalPedido());
+        
+        System.out.println("Cant    PrecioU    NombrePizza    TamanioPizza    Descripcion");
+        System.out.println(presentador.obtenerPedido(numero).getNumero() + "       " + presentador.obtenerPedido(numero).getDetallePedido().getPrecioOriginalUnitario()
+        + "       " + presentador.obtenerPedido(numero).getDetallePedido().getPizza().getNombre() + "        " + presentador.obtenerPedido(numero).getDetallePedido().getPizza().getTamanioPizza().getCantPorciones()
+        + "               " + presentador.obtenerPedido(numero).getDetallePedido().getPizza().getTipoPizza().getDescripcion());
+        
+        System.out.println("");
+        System.out.println("Total a pagar: " + presentador.obtenerPedidos().get(numero).calcTotalPedido());
+        System.out.println("**** Fin de Factura");
     }
     
     @Override

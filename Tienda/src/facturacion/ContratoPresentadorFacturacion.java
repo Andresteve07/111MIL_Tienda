@@ -19,5 +19,6 @@ public interface ContratoPresentadorFacturacion {
     public ArrayList<Pedido> obtenerPedidos();
     public void procesarOpcionIngresada(int numeroIngresado);
     public void procesarOpcionMenuSecundario(int numero);
+    public Pedido obtenerPedido(int numero);
     
 }
