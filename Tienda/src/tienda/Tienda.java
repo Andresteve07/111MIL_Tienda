@@ -5,6 +5,7 @@
  */
 package tienda;
 
+import facturacion.VistaFacturacion;
 import menuprincipal.VistaMP;
 import tomarpedido.VistaPedido;
 
@@ -31,6 +32,11 @@ public class Tienda implements ControladorVistas{
     @Override
     public void lanzarTomarPedido() {
         VistaPedido vistaPedido = new VistaPedido(this);
+    }
+    
+    @Override
+    public void lanzarFacturacion() {
+        VistaFacturacion vistaFacturacion = new VistaFacturacion(this);
     }
     
 }

@@ -12,4 +12,5 @@ package tienda;
 public interface ControladorVistas {
     public void lanzarMenuPrincipal();
     public void lanzarTomarPedido();
+    public void lanzarFacturacion();
 }

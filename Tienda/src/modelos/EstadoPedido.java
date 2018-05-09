@@ -45,19 +45,19 @@ public class EstadoPedido {
         switch(codigo){
             case 0:
                 nombre="Pendiente confirmación";
-            
+                break;
             case 1:
               nombre="En preparación";
-            
+                break;
             case 2:
                 nombre="Pendiente facturación";
-                
+                break;
             case 3:
                 nombre="Facturado";
-                
+                break;
             case 4:
                 nombre="Cancelado";
-                
+                break;
             default:
                 System.out.println("Error");
                 break;
