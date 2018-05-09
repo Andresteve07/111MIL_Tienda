@@ -35,6 +35,11 @@ public class Pedido {
         this.detallePedido = detallePedido;
         this.detalles = new ArrayList<>();
     }
+
+    public Pedido(String juan, int i, String string, String string0) {
+        this.detalles = null;
+        this.numero = i;
+    }
     
     /*
     *

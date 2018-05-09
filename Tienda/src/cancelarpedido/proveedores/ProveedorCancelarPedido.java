@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tienda;
-
+package cancelarpedido.proveedores;
+import tomarpedido.proveedores.*;
+import modelos.*;
+import java.util.List;
 /**
  *
  * @author andresteve07
  */
-public interface ControladorVistas {
-    public void lanzarMenuPrincipal();
-    public void lanzarTomarPedido();
-    public void lanzarCancelarPedido();
+public interface ProveedorCancelarPedido {
+    List<Pedido> obtenerPedidos();
 }

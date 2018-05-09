@@ -7,6 +7,7 @@ package tomarpedido.proveedores;
 
 import java.util.Arrays;
 import java.util.List;
+import modelos.Pedido;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
 
@@ -25,6 +26,7 @@ public class FalsoProveedorTomaPedido implements ProveedorTomaPedido{
             new TipoPizza("carbon vegetal", "parrilla"),
             new TipoPizza("horno gas", "horno"),
             new TipoPizza("horno lenia", "piedra"));
+     
     
     @Override
     public List<VariedadPizza> obtenerVariedades() {
@@ -35,5 +37,5 @@ public class FalsoProveedorTomaPedido implements ProveedorTomaPedido{
     public List<TipoPizza> obtenerTipos() {
         return this.tipos;
     }
-    
+
 }

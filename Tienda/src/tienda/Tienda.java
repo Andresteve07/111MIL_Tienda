@@ -5,8 +5,10 @@
  */
 package tienda;
 
+import cancelarpedido.VistaCancelarPedido;
 import menuprincipal.VistaMP;
 import tomarpedido.VistaPedido;
+import tomarpedido.proveedores.FalsoProveedorTomaPedido;
 
 /**
  *
@@ -20,7 +22,7 @@ public class Tienda implements ControladorVistas{
     public static void main(String[] args) {
         // TODO code application logic her
         ControladorVistas controlador = new Tienda();
-        controlador.lanzarMenuPrincipal();
+        controlador.lanzarCancelarPedido();
     }
 
     @Override
@@ -32,5 +34,14 @@ public class Tienda implements ControladorVistas{
     public void lanzarTomarPedido() {
         VistaPedido vistaPedido = new VistaPedido(this);
     }
+
+    @Override
+    public void lanzarCancelarPedido() {
+        VistaCancelarPedido vcp = new VistaCancelarPedido(this);
+        
+        
+    }
+    
+    
     
 }
