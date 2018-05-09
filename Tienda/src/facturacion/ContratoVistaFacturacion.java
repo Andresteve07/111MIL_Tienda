@@ -11,6 +11,11 @@ package facturacion;
  */
 public interface ContratoVistaFacturacion {
     
-    public void iniciarFacturacion();
+    public void facturar();
+    public void resultadoFacturacion(int numero);
+    public void mostarOpcionInvalida();
+    public void mostrarMenuSecundario();
+    public void irMenuPrincipal();
+    public void mostrarSaludoDespedida();
     
 }

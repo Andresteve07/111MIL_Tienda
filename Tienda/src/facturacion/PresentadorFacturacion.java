@@ -23,14 +23,56 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
         proveedorFacturacion = new FalsoProveedorFacturacion();
     }
     
+    @Override
     public void iniciar() {
-        this.vista.iniciarFacturacion();
+        this.vista.facturar();
     }
 
+    @Override
+    public void procesarOpcionIngresada(int numeroIngresado) {
+        switch(numeroIngresado) {
+            case 1:
+                this.proveedorFacturacion.obtenerPedidos().get(numeroIngresado - 1).facturar();
+                vista.resultadoFacturacion(numeroIngresado);
+                vista.mostrarMenuSecundario();
+                break;
+            case 2:
+                this.proveedorFacturacion.obtenerPedidos().get(numeroIngresado - 1).facturar();
+                vista.resultadoFacturacion(numeroIngresado);
+                vista.mostrarMenuSecundario();
+                break;
+            case 3:
+                this.proveedorFacturacion.obtenerPedidos().get(numeroIngresado - 1).facturar();
+                vista.resultadoFacturacion(numeroIngresado);
+                vista.mostrarMenuSecundario();
+                break;
+            default:
+                vista.mostarOpcionInvalida();
+                vista.mostrarMenuSecundario();
+                break;
+        }
+    }
+    
     @Override
     public ArrayList<Pedido> obtenerPedidos() {
         return (this.proveedorFacturacion.obtenerPedidos());
     }
     
-    
+    @Override
+    public void procesarOpcionMenuSecundario(int numero) {
+        switch(numero) {
+            case 1:
+                vista.facturar();
+                break;
+            case 2:
+                vista.irMenuPrincipal();
+                break;
+            case 3:
+                vista.mostrarSaludoDespedida();
+                break;
+            default:
+                vista.mostarOpcionInvalida();
+                break;
+        }
+    }
 }
