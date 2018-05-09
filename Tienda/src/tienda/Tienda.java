@@ -21,7 +21,7 @@ public class Tienda implements ControladorVistas{
     public static void main(String[] args) {
         // TODO code application logic her
         ControladorVistas controlador = new Tienda();
-        controlador.lanzarFacturacion();
+        controlador.lanzarMenuPrincipal();
     }
 
     @Override
@@ -38,4 +38,5 @@ public class Tienda implements ControladorVistas{
     public void lanzarFacturacion() {
         VistaFacturacion vistaFacturacion = new VistaFacturacion(this);
     }
+    
 }
