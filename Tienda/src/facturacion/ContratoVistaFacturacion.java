@@ -5,6 +5,8 @@
  */
 package facturacion;
 
+import modelos.Pedido;
+
 /**
  *
  * @author utku36
@@ -16,6 +18,7 @@ public interface ContratoVistaFacturacion {
     public void mostrarMenuSecundario();
     public void irMenuPrincipal();
     public void mostrarSaludoDespedida();
-    public void imprimirFactura(int numero);
+    public void imprimirFactura(int numero,Pedido pedido);
+    public void mostrarInexistenciaPedidos();
     
 }

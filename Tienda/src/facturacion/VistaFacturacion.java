@@ -29,7 +29,6 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
         Scanner scan = new Scanner(System.in);
         ArrayList<Pedido> pedidos = presentador.obtenerPedidosPendientes();
         
-        System.out.println("");
         for(Pedido pedido: pedidos) {
             System.out.println("_Pedido N" + pedido.getNumero() + " _Cliente: " + pedido.getNombreCliente());
         }
@@ -40,23 +39,23 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
     }
     
     @Override
-    public void imprimirFactura(int numero) {
+    public void imprimirFactura(int numero, Pedido pedido) {
         System.out.println("El pedido " + (numero + 1) + " se ha facturado correctamente.");
         System.out.println("La factura se muestra a continuacion:");
         System.out.println("");
-        System.out.println("**** Factura Numero: " + presentador.obtenerPedido(numero).getFactura().getNumero());
-        System.out.println("Nombre Cliente: " + presentador.obtenerPedido(numero).getNombreCliente());
-        System.out.println("Fecha y Hora de Creacion: " + presentador.obtenerPedido(numero).getFechaHoraCreacion());
-        System.out.println("Fecha y Hora de Entrega: " + presentador.obtenerPedido(numero).getFechaHoraEntrega());
+        System.out.println("**** Factura Numero: " + pedido.getFactura().getNumero());
+        System.out.println("Nombre Cliente: " + pedido.getNombreCliente());
+        System.out.println("Fecha y Hora de Creacion: " + pedido.getFechaHoraCreacion());
+        System.out.println("Fecha y Hora de Entrega: " + pedido.getFechaHoraEntrega());
         System.out.println("");
         
         System.out.println("Cant    PrecioU    NombrePizza    TamanioPizza    Descripcion");
-        System.out.println(presentador.obtenerPedido(numero).getNumero() + "       " + presentador.obtenerPedido(numero).getDetallePedido().getPrecioOriginalUnitario()
-        + "       " + presentador.obtenerPedido(numero).getDetallePedido().getPizza().getNombre() + "        " + presentador.obtenerPedido(numero).getDetallePedido().getPizza().getTamanioPizza().getCantPorciones()
-        + "               " + presentador.obtenerPedido(numero).getDetallePedido().getPizza().getTipoPizza().getDescripcion());
+        System.out.println(pedido.getNumero() + "       " + pedido.getDetallePedido().getPrecioOriginalUnitario()
+        + "       " + pedido.getDetallePedido().getPizza().getNombre() + "        " + pedido.getDetallePedido().getPizza().getTamanioPizza().getCantPorciones()
+        + "               " + pedido.getDetallePedido().getPizza().getTipoPizza().getDescripcion());
         
         System.out.println("");
-        System.out.println("Total a pagar: " + presentador.obtenerPedidos().get(numero).calcTotalPedido());
+        System.out.println("Total a pagar: " + pedido.calcTotalPedido());
         System.out.println("**** Fin de Factura");
     }
     
@@ -87,6 +86,11 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
     @Override
     public void mostrarSaludoDespedida() {
         System.out.println("Fin de operaciones. Buen dia!");
+    }
+    
+    @Override
+    public void mostrarInexistenciaPedidos() {
+        System.out.println("No hay pedidos pendientes de facturacion.");
     }
 }
 

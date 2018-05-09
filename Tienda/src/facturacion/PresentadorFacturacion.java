@@ -25,15 +25,21 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
     
     @Override
     public void iniciar() {
-        this.vista.facturar();
+        if(obtenerPedidosPendientes().size() > 0) {
+            this.vista.facturar();
+        }
+        else {
+            this.vista.mostrarInexistenciaPedidos();
+            vista.mostrarMenuSecundario();
+        }
     }
 
     @Override
     public void procesarOpcionIngresada(int numeroIngresado) {
         if(numeroIngresado >= 1 && numeroIngresado <= obtenerPedidosPendientes().size()) {
             obtenerPedidosPendientes().get(numeroIngresado - 1).facturar();
+            vista.imprimirFactura(numeroIngresado - 1,obtenerPedidosPendientes().get(numeroIngresado - 1) );
             obtenerPedidosPendientes().get(numeroIngresado - 1).getEstadoPedido().setCodigo(3);
-            vista.imprimirFactura(numeroIngresado - 1);
             vista.mostrarMenuSecundario();
         }
         else {
@@ -63,7 +69,13 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
     public void procesarOpcionMenuSecundario(int numero) {
         switch(numero) {
             case 1:
-                vista.facturar();
+                if(obtenerPedidosPendientes().size() > 0) {
+                    this.vista.facturar();
+                }
+                else {
+                    this.vista.mostrarInexistenciaPedidos();
+                    vista.mostrarMenuSecundario();
+                }
                 break;
             case 2:
                 vista.irMenuPrincipal();
