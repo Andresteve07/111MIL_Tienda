@@ -11,22 +11,43 @@ import java.util.List;
 import modelos.Pedido;
 import modelos.TipoPizza;
 import modelos.VariedadPizza;
-
+import cancelarpedido.PresentadorCancelarPedido;
+import cancelarpedido.VistaCancelarPedido;
+import java.util.ArrayList;
 /**
  *
  * @author andresteve07
  */
 public class FalsoProveedorCancelarPedido implements ProveedorCancelarPedido{
 
-     private List<Pedido> pedidos = Arrays.asList(
-             new Pedido("juan", 10,"",""),
-             new Pedido("jorge",11,"",""));
+     private List<Pedido> pedidos;
 
+    public FalsoProveedorCancelarPedido() {
+        this.pedidos = new ArrayList<>();
+        this.pedidos.add(new Pedido("juan", 10,"",""));
+        this.pedidos.add(new Pedido("jorge",11,"",""));
+        
+    }
+     
+    
     @Override
     public List<Pedido> obtenerPedidos() {
         return this.pedidos;
     }
-     
-     
+
+    @Override
+    public boolean cancelarPedido(int NroPedido) {
+        for(Pedido estePedido : this.pedidos){
+            if(estePedido.getNumero() == NroPedido){
+                estePedido.cancelar();
+                //this.pedidos.remove(estePedido);
+            }
+        }
+        return true;
+    }
+    
+    
+    
+    
     
 }

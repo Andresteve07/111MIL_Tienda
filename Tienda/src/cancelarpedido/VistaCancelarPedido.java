@@ -8,6 +8,7 @@ package cancelarpedido;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import modelos.Pedido;
 import tienda.ControladorVistas;
 
@@ -18,25 +19,14 @@ import tienda.ControladorVistas;
 public class VistaCancelarPedido implements ContratoVistaCancelarPedido {
    private ControladorVistas controlador;
    private ContratoPresentadorCancelarPedido presentador;
-   private List <Pedido> pedidos;
+   Scanner scan=new Scanner(System.in);
    
    
    public VistaCancelarPedido(ControladorVistas controladorVistas){
        this.controlador = controladorVistas;
        this.presentador = new PresentadorCancelarPedido(this);
        this.presentador.iniciar();
-       this.pedidos=new ArrayList();
    }
-   
-    
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
     
 
     @Override
@@ -49,12 +39,14 @@ public class VistaCancelarPedido implements ContratoVistaCancelarPedido {
         for (Pedido pedido : pedidos) {
          
             System.out.println(pedido.getNumero()+" ");
-            System.out.println(pedido.getDetallePedido());
+            System.out.println(pedido.getEstadoPedido());
         }
     }
     @Override
     public void borrar(){
-        System.out.println("Ingrese el numero de pedido que desea cancelar");  
+        System.out.println("Ingrese el numero de pedido que desea cancelar");
+        int nroPedido= scan.nextInt();
+        this.presentador.borrar(nroPedido);
     }
     
    

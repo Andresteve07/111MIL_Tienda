@@ -39,6 +39,7 @@ public class Pedido {
     public Pedido(String juan, int i, String string, String string0) {
         this.detalles = null;
         this.numero = i;
+        this.estadoPedido=new EstadoPedido();
     }
     
     /*
@@ -137,9 +138,9 @@ public class Pedido {
     }
     
     public void cancelar(){
-        
-        if(estadoPedido.getCodigo()==4){
-        this.detalles.clear();}
+        this.estadoPedido.setCodigo(4);
+        //if(estadoPedido.getCodigo()==4){
+        //this.detalles.clear();}
         
     }
     

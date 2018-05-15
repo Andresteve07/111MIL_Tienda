@@ -16,7 +16,7 @@ import modelos.Pedido;
  * @author utku35
  */
 public class PresentadorCancelarPedido implements ContratoPresentadorCancelarPedido {
-    Scanner scan=new Scanner(System.in);
+    
     ContratoVistaCancelarPedido vista;
     private ProveedorCancelarPedido proveedor;
     
@@ -25,25 +25,22 @@ public class PresentadorCancelarPedido implements ContratoPresentadorCancelarPed
         this.proveedor = new FalsoProveedorCancelarPedido();
     }
     @Override
-    public void borrar(List<Pedido> pedidos) {
-        vista.borrar();
-        int nroPedido= scan.nextInt();
-        for (Pedido pedido : pedidos) {
-            if(nroPedido==pedido.getNumero()){
-                pedidos.remove(pedido);
-            }
-        }
-        
-    }
-
-    @Override
     public List<Pedido> obtenerPedidos() {
         return this.proveedor.obtenerPedidos();
     }
+    
+    @Override
+    public void borrar(int nroPedido) {
+        this.proveedor.cancelarPedido(nroPedido);
+        this.vista.mostrarPedidos(this.proveedor.obtenerPedidos());
+    }
+    
+    
 
     @Override
     public void iniciar() {
         this.vista.mostrarPedidos(this.proveedor.obtenerPedidos());
+        this.vista.borrar();
         
     }
 

@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface ProveedorCancelarPedido {
     List<Pedido> obtenerPedidos();
+    boolean cancelarPedido(int NroPedido);
 }

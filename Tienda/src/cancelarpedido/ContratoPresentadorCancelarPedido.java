@@ -13,7 +13,7 @@ import modelos.Pedido;
  * @author utku35
  */
 public interface ContratoPresentadorCancelarPedido {
-    public void borrar(List<Pedido> pedidos);
+    public void borrar(int nroPedido);
     public List<Pedido> obtenerPedidos();
 
     public void iniciar();
