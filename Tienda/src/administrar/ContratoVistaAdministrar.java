@@ -18,7 +18,7 @@ import modelos.VariedadPizza;
 public interface ContratoVistaAdministrar {
     
     public void irMenuPrincipal();
-    public void mostrarCategorias(int codigoCategorias);
+    public void mostrarCategorias();
     public void mostrarCoccion(List<TipoPizza> tipoCoccion);
     public void mostrarTamanios(List<TamanioPizza> tamanios);
     public void mostrarVariedades(List<VariedadPizza> variedades);

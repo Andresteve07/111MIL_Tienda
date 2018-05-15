@@ -30,7 +30,7 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
     }
     
     @Override
-    public void mostrarCategorias(int codigoCategorias){
+    public void mostrarCategorias(){
         Scanner teclado = new Scanner(System.in);
         clearConsole();
         System.out.println("\t"+"¡Bienvenidos!"+"\n"+
@@ -40,7 +40,7 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
                 "3) Tamaño."+"\n"+
                 "4) Precios."+"\n"+
                 "5) Salir."+"\n");
-        codigoCategorias = teclado.nextInt();
+        int codigoCategorias = teclado.nextInt();
         presentador.procesarCategorias(codigoCategorias);
         
     }
@@ -73,11 +73,11 @@ public class VistaAdministrar implements ContratoVistaAdministrar {
     }
     
     @Override
-    public void mostrarPrecios(List<Pizza> precios){
-        for(int i=0; i<precios.size();i++){
+    public void mostrarPrecios(List<Pizza> pizzas){
+        for(int i=0; i<pizzas.size();i++){
            
-            System.out.print("Variedad " + i+1 + ": ");
-            System.out.println(precios.get(i).getPrecio());
+            System.out.print("Nombre " + pizzas.get(i).getNombre() + ": ");
+            System.out.println(pizzas.get(i).getPrecio());
         }
     }
     
