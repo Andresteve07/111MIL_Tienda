@@ -13,7 +13,7 @@ import modelos.Pedido;
  */
 public interface ContratoVistaFacturacion {
     
-    public void facturar();
+    public void listarFacturasPendientes();
     public void mostarOpcionInvalida();
     public void mostrarMenuSecundario();
     public void irMenuPrincipal();

@@ -26,7 +26,7 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
     @Override
     public void iniciar() {
         if(obtenerPedidosPendientes().size() > 0) {
-            this.vista.facturar();
+            this.vista.listarFacturasPendientes();
         }
         else {
             this.vista.mostrarInexistenciaPedidos();
@@ -52,6 +52,7 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
         ArrayList<Pedido> pedidosPendientes = new ArrayList();
         ArrayList<Pedido> pedidosTotales = obtenerPedidos();
         
+        
         for(Pedido pedido: pedidosTotales) {
             if(pedido.getEstadoPedido().getCodigo() == 2) {
                 pedidosPendientes.add(pedido);
@@ -70,7 +71,7 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
         switch(numero) {
             case 1:
                 if(obtenerPedidosPendientes().size() > 0) {
-                    this.vista.facturar();
+                    this.vista.listarFacturasPendientes();
                 }
                 else {
                     this.vista.mostrarInexistenciaPedidos();

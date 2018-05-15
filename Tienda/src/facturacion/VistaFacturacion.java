@@ -25,7 +25,7 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
     }
     
     @Override
-    public void facturar() {
+    public void listarFacturasPendientes() {
         Scanner scan = new Scanner(System.in);
         ArrayList<Pedido> pedidos = presentador.obtenerPedidosPendientes();
         
@@ -62,7 +62,7 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
     @Override
     public void mostarOpcionInvalida() {
         System.out.println("Ha ingresado un numero inválido.");
-        facturar();
+        listarFacturasPendientes();
     }
     
     @Override
