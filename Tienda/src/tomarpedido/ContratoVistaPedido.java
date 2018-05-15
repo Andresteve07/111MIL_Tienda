@@ -18,5 +18,7 @@ public interface ContratoVistaPedido {
     public void mostrarSeleccionCantidad();
     public void irMenuPrincipal();
     public void confirmacion();
-    
+    public void mostrarPreguntaNuevoPedido();
+
+    public void mostrarPreguntarNombre();
 }

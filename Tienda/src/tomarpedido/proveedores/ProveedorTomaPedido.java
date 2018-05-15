@@ -11,9 +11,6 @@ import java.util.List;
  * @author andresteve07
  */
 public interface ProveedorTomaPedido {
-    List<VariedadPizza> obtenerVariedades();
-    List<TipoPizza> obtenerTipos();
-    List<TamanioPizza> obtenerTamanio();
     List<Pizza> obtenerPizzas();
-
+    public void guardarPedido(Pedido pedido);
 }

@@ -8,9 +8,6 @@ package tomarpedido;
 import java.util.List;
 import java.util.Scanner;
 import modelos.Pizza;
-import modelos.TamanioPizza;
-import modelos.TipoPizza;
-import modelos.VariedadPizza;
 import tienda.ControladorVistas;
 
 /**
@@ -104,9 +101,25 @@ public class VistaPedido implements ContratoVistaPedido {
         
     }
 
-    
+    @Override
+    public void mostrarPreguntaNuevoPedido() {
+        Scanner teclado=new Scanner(System.in);
+        clearConsole();
+        int opcion;
+        System.out.println("Desea hacer un nuevo pedido?");
+        System.out.println("1)Si");
+        System.out.println("2)No");
+        opcion= teclado.nextInt();
+        this.presentador.procesarNuevoPedido(opcion);
+    }
 
-    
-    
+    @Override
+    public void mostrarPreguntarNombre() {
+        Scanner teclado=new Scanner(System.in);
+        String nombre;
+        System.out.println("Ingrese su nombre:");
+        nombre = teclado.next();
+        this.presentador.procesarNombre(nombre);
+    }
     
 }

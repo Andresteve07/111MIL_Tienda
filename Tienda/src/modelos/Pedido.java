@@ -6,6 +6,7 @@
 package modelos;
 
 import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author utku29
@@ -14,25 +15,23 @@ public class Pedido {
     
     /********** Parametros ****************/
     
-    private final ArrayList<DetallePedido> detalles;
+    private ArrayList<DetallePedido> detalles;
     private String nombreCliente;
     private int numero;
-    private String fechaHoraCreacion;
-    private String fechaHoraEntrega;
+    private Date fechaHoraCreacion;
+    private Date fechaHoraEntrega;
     private Factura factura;
     private EstadoPedido estadoPedido;
-    private DetallePedido detallePedido;
 
     /*********** Constructores********************/
     
-    public Pedido(String nombreCliente, int numero, String fechaHoraCreacion, String fechaHoraEntrega, Factura factura, EstadoPedido estadoPedido, DetallePedido detallePedido) {
+    public Pedido(String nombreCliente, int numero, Date fechaHoraCreacion, Date fechaHoraEntrega, Factura factura, EstadoPedido estadoPedido) {
         this.nombreCliente = nombreCliente;
         this.numero = numero;
         this.fechaHoraCreacion = fechaHoraCreacion;
         this.fechaHoraEntrega = fechaHoraEntrega;
         this.factura = factura;
         this.estadoPedido = estadoPedido;
-        this.detallePedido = detallePedido;
         this.detalles = new ArrayList<>();
     }
     
@@ -49,11 +48,11 @@ public class Pedido {
         return numero;
     }
     
-    public String getFechaHoraCreacion() {
+    public Date getFechaHoraCreacion() {
         return fechaHoraCreacion;
     }
     
-    public String getFechaHoraEntrega() {
+    public Date getFechaHoraEntrega() {
         return fechaHoraEntrega;
     }
     
@@ -65,9 +64,6 @@ public class Pedido {
         return factura;
     }
     
-    public DetallePedido getDetallePedido() {
-        return detallePedido;
-    }
     
     /********************************************************************/
     
@@ -84,11 +80,11 @@ public class Pedido {
         this.numero = numero;
     }
 
-    public void setFechaHoraCreacion(String fechaHoraCreacion) {
+    public void setFechaHoraCreacion(Date fechaHoraCreacion) {
         this.fechaHoraCreacion = fechaHoraCreacion;
     }
     
-    public void setFechaHoraEntrega(String fechaHoraEntrega) {
+    public void setFechaHoraEntrega(Date fechaHoraEntrega) {
         this.fechaHoraEntrega = fechaHoraEntrega;
     }
     
@@ -100,10 +96,6 @@ public class Pedido {
         this.estadoPedido = estadoPedido;
     }
 
-    public void setDetallePedido(DetallePedido detallePedido) {
-        this.detallePedido = detallePedido;
-    }
-    
     
     /*************************************************************/
     
@@ -113,11 +105,8 @@ public class Pedido {
     *
     */
     
-    public void agregarDetalleDePedido(){
-        
-        if(estadoPedido.getCodigo()==0 || estadoPedido.getCodigo()==1)
-        detalles.add(detallePedido);
-        
+    public void agregarDetalleDePedido(ArrayList<DetallePedido> detalles){
+        this.detalles = detalles;
     }
     
 

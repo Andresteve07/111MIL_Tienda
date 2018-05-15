@@ -5,11 +5,12 @@
  */
 package tomarpedido;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import modelos.DetallePedido;
+import modelos.Pedido;
 import modelos.Pizza;
-import modelos.TipoPizza;
-import modelos.VariedadPizza;
-import modelos.TamanioPizza;
 import tomarpedido.proveedores.FalsoProveedorTomaPedido;
 import tomarpedido.proveedores.ProveedorTomaPedido;
 
@@ -24,6 +25,9 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     private final ProveedorTomaPedido proveedorTomaPedido;
     private int codigoPizza;
     private int cantidad;
+    private String nombre;
+    private ArrayList<DetallePedido> detalles = new ArrayList<>();
+
 
     @Override
     public int getCantidad() {
@@ -67,14 +71,12 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     
     @Override
     public void procesarCantidades(int op){
-        switch(op){
-            case 0:
-                iniciar();
-                break;
-            default:
-                cantidad= op;
-                this.vista.confirmacion();
-                break;
+        if(op>0){
+            cantidad= op;
+            this.vista.confirmacion();
+        }else{
+            this.vista.mostrarOPcionErronea();
+            this.vista.mostrarSeleccionCantidad();
         }
     }
     
@@ -95,10 +97,11 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     public void procesarConfirmacion(int op) {
         switch(op){
             case 1:
-                
+                agregarDetallePizza();
+                this.vista.mostrarPreguntaNuevoPedido();
                 break;
             case 2:
-                this.vista.irMenuPrincipal();
+                iniciar();
                 break;
             default:
                 this.vista.mostrarOPcionErronea();
@@ -107,5 +110,35 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
         }
     }
 
+    @Override
+    public void procesarNuevoPedido(int op) {
+         switch(op){
+            case 1:
+                iniciar();
+                break;
+            case 2:
+                this.vista.mostrarPreguntarNombre();
+                Date fechaCreacion = new Date(0, 0, 0, 0, 0);
+                Pedido nuevo = new Pedido(nombre, 0, fechaCreacion, null, null, null);
+                nuevo.agregarDetalleDePedido(detalles);
+                this.proveedorTomaPedido.guardarPedido(nuevo);
+                this.vista.irMenuPrincipal();
+                break;
+            default:
+                this.vista.mostrarOPcionErronea();
+                this.vista.mostrarPreguntaNuevoPedido();
+                break;
+        }
+    }
+
+    @Override
+    public void procesarNombre(String nombre) {
+        this.nombre=nombre;
+    }
+    
+    public void agregarDetallePizza() {
+    detalles.add(new DetallePedido(cantidad,this.proveedorTomaPedido.obtenerPizzas().get(codigoPizza)));
+    }
+    
     
 }
