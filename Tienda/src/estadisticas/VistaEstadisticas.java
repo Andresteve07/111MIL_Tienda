@@ -5,9 +5,14 @@
  */
 package estadisticas;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import menuprincipal.ContratoPresentadorMP;
 import menuprincipal.PresentadorMP;
+import modelos.Pedido;
+import modelos.TipoPizza;
+import modelos.VariedadPizza;
 import tienda.ControladorVistas;
 
 /**
@@ -24,15 +29,14 @@ public class VistaEstadisticas implements ContratoVistaEstadisticas{
         this.presentador.iniciar();  
     }
 
-    @Override
-    public void mostrarEstadisticas(String variedadTop, String tipoTop, float ingresosDiarios, int cantPedidosDiarios) {
-        System.out.println("\t"+"Estadisticas."+"\n"+
+         
+        
+    /*  System.out.println("\t"+"Estadisticas."+"\n"+
                 "Variedad mas pedida: "+variedadTop+"\n"+
                 "Tipo mas pedido: "+tipoTop+"\n"+
                 "Promedio de ingresos por dia: "+ingresosDiarios+"\n"+
                 "Promedio de pedidos por dia: "+cantPedidosDiarios);
- 
-    }
+ */
 
     @Override
     public void mostrarOpciones() {
@@ -54,5 +58,13 @@ public class VistaEstadisticas implements ContratoVistaEstadisticas{
     public void mensajeDespedida() {
        System.out.println("Hasta luego!");
     }
-    
+
+    @Override
+    public void mostrarEstadisticas(VariedadPizza variedadTop, TipoPizza tipoTop, float ingresoMedioDiario) {
+        System.out.println("Variedad Top: " + variedadTop.getNombre());
+        System.out.println("Tipo Top: " + tipoTop);
+        System.out.println("Ingreso Diario Medio: " + ingresoMedioDiario);
+    }
+        
+
 }

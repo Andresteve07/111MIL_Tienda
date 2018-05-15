@@ -5,13 +5,23 @@
  */
 package estadisticas;
 
+import java.util.ArrayList;
+import java.util.List;
+import modelos.Pedido;
+import modelos.TipoPizza;
+import modelos.VariedadPizza;
+
 /**
  *
  * @author utku38
  */
 public interface ContratoVistaEstadisticas {
-    public void mostrarEstadisticas(String variedadTop, String tipoTop, float ingresosDiarios, int cantPedidosDiarios);
+    //public void mostrarEstadisticas(List<Pedido> pedidos);
     public void mostrarOpciones();
     public void volverAlMP();
     public void mensajeDespedida();
+    //public void mostrarVariedadTop(VariedadPizza variedadTop);
+    //public void mostrarTipoTop(TipoPizza tipoTop);
+    //public void mostrarIngresoMedioDiario(float ingresoMedioDiario);
+    public void mostrarEstadisticas(VariedadPizza variedadTop, TipoPizza tipoTop, float ingresoMedioDiario);
 }

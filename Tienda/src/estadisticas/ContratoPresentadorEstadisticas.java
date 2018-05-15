@@ -12,5 +12,6 @@ package estadisticas;
 public interface ContratoPresentadorEstadisticas {
     public void iniciar();
     public void procesarOpcion(int op);
+    public int calcularMayor(int[] variedades);
     
 }
