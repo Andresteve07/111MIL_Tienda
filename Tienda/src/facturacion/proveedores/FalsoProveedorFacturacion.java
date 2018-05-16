@@ -72,6 +72,11 @@ public class FalsoProveedorFacturacion implements ContratoProveedorFacturacion {
         pedido1.agregarDetalleAPedido(detallePedido2);
         pedido1.agregarDetalleAPedido(detallePedido3);
         
+        pedido2.agregarDetalleAPedido(detallePedido2);
+        
+        pedido3.agregarDetalleAPedido(detallePedido2);
+        pedido3.agregarDetalleAPedido(detallePedido1);
+        
         pedido1.getEstadoPedido().setCodigo(2);
         pedido2.getEstadoPedido().setCodigo(2);
         pedido3.getEstadoPedido().setCodigo(2);

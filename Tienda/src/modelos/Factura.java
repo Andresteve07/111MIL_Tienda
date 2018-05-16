@@ -76,7 +76,7 @@ public class Factura {
     
     public void setDetalle(ArrayList<DetallePedido> detallePedido) {
         for(DetallePedido pedido : detallePedido) {
-            pedidos.add(pedido);
+            //pedidos.add(pedido);
         }
     }
 
