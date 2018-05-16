@@ -36,11 +36,24 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
 
     @Override
     public void procesarOpcionIngresada(int numeroIngresado) {
-        if(numeroIngresado >= 1 && numeroIngresado <= obtenerPedidosPendientes().size()) {
-            obtenerPedidosPendientes().get(numeroIngresado - 1).facturar();
-            vista.imprimirFactura(numeroIngresado - 1,obtenerPedidosPendientes().get(numeroIngresado - 1) );
-            obtenerPedidosPendientes().get(numeroIngresado - 1).getEstadoPedido().setCodigo(3);
-            vista.mostrarMenuSecundario();
+        if(numeroIngresado >= 1) {
+            Pedido miPedido = null;
+            for(Pedido pedido : this.obtenerPedidosPendientes()){
+                if(pedido.getNumero()== numeroIngresado){
+                    miPedido = pedido;
+                    break;
+                }
+            }
+            if(miPedido!= null){
+                miPedido.facturar();
+                vista.imprimirFactura(numeroIngresado,miPedido);
+                vista.mostrarMenuSecundario();
+            } else {
+                vista.mostrarPedidoInexistente();
+                this.vista.mostrarMenuSecundario();
+            }
+            
+            
         }
         else {
             vista.mostarOpcionInvalida();

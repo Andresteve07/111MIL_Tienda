@@ -19,14 +19,18 @@ public class Factura {
     private Date fechaHoraEmision;
     private int numero;
     private EstadoFactura estado;
-    private ArrayList<DetallePedido> pedidos;
+    private ArrayList<DetallePedido> detalles;
     private float TotalAPagar;
 
     /**
      * CONSTRUCTORES
      */
     public Factura() {
+        this.fechaHoraEmision = new Date();
         estado = new EstadoFactura();
+        this.detalles = new ArrayList<>();
+        
+        
     }
 
     public Factura(Date fechaHoraEmision, int numero,EstadoFactura estado, float TotalAPagar) {
@@ -52,7 +56,7 @@ public class Factura {
     }
 
     public ArrayList<DetallePedido> getPedidos() {
-        return pedidos;
+        return detalles;
     }
 
     public float getTotalAPagar() {
@@ -75,8 +79,10 @@ public class Factura {
     }
     
     public void setDetalle(ArrayList<DetallePedido> detallePedido) {
-        for(DetallePedido pedido : detallePedido) {
-            pedidos.add(pedido);
+        if(detallePedido.size() > 0) {
+            for(DetallePedido pedido : detallePedido) {
+            detalles.add(pedido);
+            }
         }
     }
 
@@ -89,14 +95,14 @@ public class Factura {
      * OTROS METODOS
      */
     public void imprimirDetalleFactura () {
-        for (DetallePedido pedido : pedidos) {
+        for (DetallePedido pedido : detalles) {
             System.out.println(pedido.toString());
         }
     }
     
     public void imprimirTotalAPagar() {
         float total = 0;
-        for (DetallePedido pedido : pedidos) {
+        for (DetallePedido pedido : detalles) {
             total += pedido.calcTotalItem();
         }
         
