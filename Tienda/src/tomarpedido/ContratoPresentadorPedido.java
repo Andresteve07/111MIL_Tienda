@@ -29,5 +29,9 @@ public interface ContratoPresentadorPedido {
 
     public void procesarNombre(String nombre);
 
+    public void presentarDetalles();
+
+    public void procesarConfirmacionFinal(int op);
+
     
 }

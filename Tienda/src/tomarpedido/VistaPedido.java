@@ -121,5 +121,29 @@ public class VistaPedido implements ContratoVistaPedido {
         nombre = teclado.next();
         this.presentador.procesarNombre(nombre);
     }
+
+    @Override
+    public void mostrarDetallesPedido() {
+        Scanner teclado=new Scanner(System.in);
+        clearConsole();
+        int opcion;
+        System.out.println("Su pedido final es:");
+        this.presentador.presentarDetalles();
+        System.out.println("Desea confirmar su pedido final? ");
+        System.out.println("1)Si");
+        System.out.println("2)No");
+        opcion = teclado.nextInt();
+        this.presentador.procesarConfirmacionFinal(opcion);
+    }
+
+    @Override
+    public void mensajeFinalTomarPedido() {
+        System.out.println("Gracias! Su pedido esta siendo procesado.");
+    }
+
+    @Override
+    public void mostrarAnuloConfirmacion() {
+        System.out.println("Anulo su Confirmacion. sera devuelto al menu principal.");
+    }
     
 }

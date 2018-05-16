@@ -21,4 +21,10 @@ public interface ContratoVistaPedido {
     public void mostrarPreguntaNuevoPedido();
 
     public void mostrarPreguntarNombre();
+
+    public void mostrarDetallesPedido();
+
+    public void mensajeFinalTomarPedido();
+
+    public void mostrarAnuloConfirmacion();
 }

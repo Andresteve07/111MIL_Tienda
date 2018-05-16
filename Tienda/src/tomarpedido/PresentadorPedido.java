@@ -117,13 +117,7 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
                 iniciar();
                 break;
             case 2:
-                this.vista.mostrarPreguntarNombre();
-                Date fechaCreacion = new Date(0, 0, 0, 0, 0);
-                Pedido nuevo = new Pedido(nombre, 0, fechaCreacion, null, null, null);
-                nuevo.agregarDetalleDePedido(detalles);
-                this.proveedorTomaPedido.guardarPedido(nuevo);
-                this.vista.irMenuPrincipal();
-                break;
+                this.vista.mostrarDetallesPedido();
             default:
                 this.vista.mostrarOPcionErronea();
                 this.vista.mostrarPreguntaNuevoPedido();
@@ -138,6 +132,35 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     
     public void agregarDetallePizza() {
     detalles.add(new DetallePedido(cantidad,this.proveedorTomaPedido.obtenerPizzas().get(codigoPizza)));
+    }
+
+    @Override
+    public void presentarDetalles() {
+        for(DetallePedido detalle : detalles){
+            System.out.println(detalle.toString());
+        }
+    }
+
+    @Override
+    public void procesarConfirmacionFinal(int op) {
+        switch(op){
+            case 1:
+                this.vista.mostrarPreguntarNombre();
+                Date fechaCreacion = new Date(0, 0, 0, 0, 0);
+                Pedido nuevo = new Pedido(nombre, 0, fechaCreacion, null, null, null);
+                nuevo.agregarDetalleDePedido(detalles);
+                this.proveedorTomaPedido.guardarPedido(nuevo);
+                this.vista.mensajeFinalTomarPedido();
+                this.vista.irMenuPrincipal();
+                break;
+            case 2:
+                this.vista.mostrarAnuloConfirmacion();
+                this.vista.irMenuPrincipal();
+                break;
+            default:
+                this.vista.mostrarOPcionErronea();
+                this.vista.mostrarDetallesPedido();
+        }
     }
     
     
