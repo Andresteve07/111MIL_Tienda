@@ -93,5 +93,10 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
     public void mostrarInexistenciaPedidos() {
         System.out.println("No hay pedidos pendientes de facturacion.");
     }
+
+    @Override
+    public void mostrarPedidoInexistente() {
+        System.out.println("El Pedido que desea facturar no esta disponible.");
+    }
 }
 

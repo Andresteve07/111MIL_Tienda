@@ -19,5 +19,7 @@ public interface ContratoVistaFacturacion {
     public void mostrarSaludoDespedida();
     public void imprimirFactura(int numero,Pedido pedido);
     public void mostrarInexistenciaPedidos();
+
+    public void mostrarPedidoInexistente();
     
 }

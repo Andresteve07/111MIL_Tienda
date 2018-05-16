@@ -150,6 +150,7 @@ public class Pedido {
             
             this.factura = new Factura();
             this.factura.setDetalle(detalles);
+            this.estadoPedido.setCodigo(3);
             
         }
         
