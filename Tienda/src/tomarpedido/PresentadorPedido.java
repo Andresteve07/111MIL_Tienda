@@ -39,6 +39,12 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
         return codigoPizza;
     }
 
+    @Override
+    public ArrayList<DetallePedido> getDetalles() {
+        return detalles;
+    }
+    
+
     public PresentadorPedido(ContratoVistaPedido vista) {
         this.vista = vista;
         this.proveedorTomaPedido = new FalsoProveedorTomaPedido();
@@ -134,12 +140,6 @@ public class PresentadorPedido implements ContratoPresentadorPedido{
     detalles.add(new DetallePedido(cantidad,this.proveedorTomaPedido.obtenerPizzas().get(codigoPizza)));
     }
 
-    @Override
-    public void presentarDetalles() {
-        for(DetallePedido detalle : detalles){
-            System.out.println(detalle.toString());
-        }
-    }
 
     @Override
     public void procesarConfirmacionFinal(int op) {
