@@ -86,7 +86,7 @@ public class PresentadorFacturacion implements ContratoPresentadorFacturacion {
                 }
                 else {
                     this.vista.mostrarInexistenciaPedidos();
-                    vista.mostrarMenuSecundario();
+                    vista.irMenuPrincipal();
                 }
                 break;
             case 2:

@@ -40,7 +40,7 @@ public class VistaFacturacion implements ContratoVistaFacturacion {
     
     @Override
     public void imprimirFactura(int numero, Pedido pedido) {
-        System.out.println("El pedido " + (numero + 1) + " se ha facturado correctamente.");
+        System.out.println("El pedido " + numero + " se ha facturado correctamente.");
         System.out.println("La factura se muestra a continuacion:");
         System.out.println("");
         System.out.println("**** Factura Numero: " + pedido.getFactura().getNumero());
