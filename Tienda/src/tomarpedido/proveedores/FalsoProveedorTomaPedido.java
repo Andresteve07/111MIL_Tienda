@@ -38,7 +38,7 @@ public class FalsoProveedorTomaPedido implements ProveedorTomaPedido{
             new TamanioPizza(12,"Grande"));
     */
      private List<Pizza> pizzas = Arrays.asList(
-        new Pizza("calagrande", 120.5f,new TamanioPizza(12,"Grande"), new TipoPizza("dsdfsdvsdv", "piedra"), new VariedadPizza("dvsdvsd", "calabresa")));
+        new Pizza("calagrande", 120.5f,new TamanioPizza(8,"Chica"), new TipoPizza("dsdfsdvsdv", "piedra"), new VariedadPizza("dvsdvsd", "calabresa")));
     
     @Override
     public List<Pizza> obtenerPizzas() {

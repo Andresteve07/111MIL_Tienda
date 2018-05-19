@@ -6,7 +6,6 @@
 package tomarpedido;
 
 import java.util.List;
-import modelos.DetallePedido;
 import modelos.Pizza;
 import modelos.TamanioPizza;
 import modelos.TipoPizza;
@@ -27,9 +26,8 @@ public interface ContratoPresentadorPedido {
     public int getCodigoPizza();
     public void procesarConfirmacion(int op);
     public void procesarNuevoPedido(int op);
+
     public void procesarNombre(String nombre);
-    public void procesarConfirmacionFinal(int op);
-    public Iterable<DetallePedido> getDetalles();
 
     
 }

@@ -7,7 +7,6 @@ package tomarpedido;
 
 import java.util.List;
 import java.util.Scanner;
-import modelos.DetallePedido;
 import modelos.Pizza;
 import tienda.ControladorVistas;
 
@@ -121,32 +120,6 @@ public class VistaPedido implements ContratoVistaPedido {
         System.out.println("Ingrese su nombre:");
         nombre = teclado.next();
         this.presentador.procesarNombre(nombre);
-    }
-
-    @Override
-    public void mostrarDetallesPedido() {
-        Scanner teclado=new Scanner(System.in);
-        clearConsole();
-        int opcion;
-        System.out.println("Su pedido final es:");
-        for(DetallePedido detalle : presentador.getDetalles()){
-            System.out.println(detalle.toString());
-        }
-        System.out.println("Desea confirmar su pedido final? ");
-        System.out.println("1)Si");
-        System.out.println("2)No");
-        opcion = teclado.nextInt();
-        this.presentador.procesarConfirmacionFinal(opcion);
-    }
-
-    @Override
-    public void mensajeFinalTomarPedido() {
-        System.out.println("Gracias! Su pedido esta siendo procesado.");
-    }
-
-    @Override
-    public void mostrarAnuloConfirmacion() {
-        System.out.println("Anulo su Confirmacion. sera devuelto al menu principal.");
     }
     
 }
